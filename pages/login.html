@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <!-- BULMA CSS FRAMEWORK -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+    />
+    <script src="../js/users.js" async defer></script>
+  </head>
+  <body>
+    <main>
+      <div id="loginForm" class="container">
+        <p>Please use your user and password to enter the profile page</p>
+        <br />
+        <div class="field">
+          <p class="control has-icons-left has-icons-right">
+            <input
+              id="userEmail"
+              class="input"
+              type="email"
+              placeholder="Email"
+            />
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control has-icons-left">
+            <input
+              id="userPassw"
+              class="input"
+              type="password"
+              placeholder="Password"
+            />
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <a href="./adminPanel.html" class="button is-success"> Log in </a>
+            <button class="button is-info">Sign in</button>
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

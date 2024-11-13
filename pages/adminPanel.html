@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- BULMA CSS FRAMEWORK -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="../js/adminPanel.js" async defer></script>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav
+      class="navbar is-fixed-top"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a href="../index.html" class="button is-danger">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- /NAV -->
+
+    <div>
+      <h1 id="userHello">Hello</h1>
+    </div>
+    <main class="container">
+      <article id="tablePanel" class="panel is-info">
+        <p class="panel-heading">Admin Panel</p>
+        <p class="panel-tabs">
+          <a class="adminProducts" id="cat_0">Products</a>
+          <a class="adminCategories" id="cat_1">Categories</a>
+          <a class="adminUsers" id="cat_2">Users</a>
+        </p>
+        <div id="tableRows"></div>
+      </article>
+    </main>
+  </body>
+
+  <template id="listItemTemplate">
+    <a class="panel-block">
+      <a id="title"></a>
+    </a>
+  </template>
+</html>

@@ -6,6 +6,7 @@ const API_URLS = {
   ALL_CATEGORIES: "https://fakestoreapi.com/products/categories",
   PRODUCTS_BY_CATEGORIES: "https://fakestoreapi.com/products/category/",
   GET_SINGLE_PRODUCT: "https://fakestoreapi.com/products/",
+  GET_ALL_USERS: "https://fakestoreapi.com/users",
 };
 
 const mainPage = document.querySelector("#mainPage");
@@ -235,13 +236,21 @@ function createMainHome() {
   }
 }
 
+function cleanLocalStorage() {
+  if (localStorage.hasOwnProperty("email")) {
+    localStorage.removeItem("email");
+  }
+  if (localStorage.hasOwnProperty("password")) {
+    localStorage.removeItem("password");
+  }
+}
+
 /**
  *
- * CALL ALL NEEDED FUNCTIONS
+ * CALL FUNCTIONS
  *
  */
 
 getAllCategories(); // To ask for the categories and initialize UI menu behavior
 closeModalFromExternal();
-
 createMainHome();

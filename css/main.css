@@ -193,6 +193,18 @@ nav {
   height: 100px !important;
 }
 
+#tablePanel {
+  margin-top: 10px !important;
+  margin-bottom: 60px;
+}
+
+#userHello {
+  margin-top: 80px;
+  height: auto !important;
+  padding: 25px;
+  text-align: center;
+}
+
 .marquee {
   margin-top: 20px;
   margin-bottom: -25px;
@@ -215,6 +227,40 @@ nav {
 
 .marquee-item {
   flex-shrink: 0;
+}
+
+#loginForm {
+  width: 100%;
+  margin-top: 100px;
+}
+
+#loginForm .button {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.tabSelected {
+  font-weight: bold !important;
+  color: darkblue !important;
+}
+
+.adminProducts,
+.adminCategories,
+.adminUsers {
+  color: black;
+}
+
+.adminProducts:hover,
+.adminCategories:hover,
+.adminUsers:hover {
+  color: blue;
+}
+
+.cart {
+  background-color: aqua;
+  height: 200px;
+  width: 100%;
+  margin-top: 120px;
 }
 
 @keyframes scrolling {
