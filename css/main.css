@@ -4,25 +4,97 @@
   font-family: "Montserrat", sans-serif;
 }
 
+main {
+  width: 100% !important;
+}
+
 nav {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   border-bottom: 2px solid gainsboro;
 }
 
-#imgHolder {
-  width: auto;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  box-sizing: border-box;
+.card-content .button,
+.modalDetails .button {
+  width: 100%;
 }
 
-img {
-  object-fit: contain;
-  margin: 2em;
-  border: 2px solid transparent;
+.modalDetails .button {
+  margin-top: 10px;
+}
+
+#Title {
+  margin-top: -35px;
+}
+
+#Price {
+  font-weight: bold;
+}
+
+#Rating {
+  color: darkmagenta;
+}
+
+#imgHolder {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  margin-bottom: 100px;
+}
+
+.card {
+  padding-top: 20px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card img {
+  width: 200px !important;
+  margin-top: 25px;
+}
+
+.modalDetails img {
+  display: block;
+  width: 200px;
+  margin: auto;
+  padding: 15px;
+}
+
+.modalDetails p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.modalDetails #productPrice,
+.modalDetails #separator,
+#productName {
+  font-weight: bold;
+}
+
+.modalDetails #separator {
+  font-size: 20px;
+}
+
+.modalDetails #productPrice {
+  font-size: 20px;
+  color: darkblue;
+  text-align: right;
+}
+
+.modalDetails #productRating {
+  display: inline-block;
+  text-align: right;
+  margin-left: 15px;
+  font-size: 20px;
+}
+
+.modalDetails #productName {
+  font-size: 28px;
 }
 
 .fadeInUp {
@@ -40,6 +112,11 @@ img {
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
+  50% {
+    opacity: 0.2;
+    -webkit-transform: none;
+    transform: none;
+  }
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -52,6 +129,11 @@ img {
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
+  50% {
+    opacity: 0.2;
+    -webkit-transform: none;
+    transform: none;
+  }
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -59,7 +141,6 @@ img {
   }
 }
 
-/* animate new box */
 .new-card {
   animation: fadeInUp 0.3s linear;
 }

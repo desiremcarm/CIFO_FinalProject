@@ -5,6 +5,7 @@ const API_URLS = {
   BASE: "https://fakestoreapi.com/",
   ALL_CATEGORIES: "https://fakestoreapi.com/products/categories",
   PRODUCTS_BY_CATEGORIES: "https://fakestoreapi.com/products/category/",
+  GET_SINGLE_PRODUCT: "https://fakestoreapi.com/products/",
 };
 
 // GET ALL CATEGORIES
@@ -26,7 +27,62 @@ async function getProductsPerCategory(id) {
   addProdImagesToUI(data); // Create images and append them to the UI
 }
 
+// GET PRODUCT DETAILS BY ID
+async function retrieveItemDetails(itemId) {
+  let data;
+  const res = await fetch(API_URLS.GET_SINGLE_PRODUCT + itemId);
+  data = await res.json();
+  console.log(data);
+  fillProductDetailModal(data);
+}
+
 // ******** UI RELATED **********
+
+// Close modal from X or from keyboard
+function closeModalFromExternal() {
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeProductDetailModal();
+    }
+  });
+}
+
+// Close modal
+function closeProductDetailModal() {
+  document.querySelector(".modal").classList.remove("is-active");
+  document.querySelector("#modalHolder").innerHTML = "";
+}
+
+function fillProductDetailModal(data) {
+  let template = document.querySelector("#productDetails").content;
+  let modalTarget = document.getElementById("modalHolder");
+  const clone = template.cloneNode(true);
+
+  clone.querySelector("#productName").textContent = data.title;
+  clone.querySelector("#productDesc").textContent = data.description;
+  clone.querySelector("#productPrice").textContent = data.price + "$";
+  clone.querySelector("img").src = data.image;
+  clone.querySelector("#productCategory").textContent =
+    "Category: " + data.category;
+  clone.querySelector("#productRating").textContent = "⭐" + data.rating.rate;
+
+  clone
+    .querySelector(".modal-close")
+    .addEventListener("click", closeProductDetailModal);
+  clone
+    .querySelector(".modal-background")
+    .addEventListener("click", closeProductDetailModal);
+
+  modalTarget.appendChild(clone);
+
+  // Open modal once is filled
+  openProductDetailModal();
+}
+
+// Open modal
+function openProductDetailModal() {
+  document.querySelector(".modal").classList.add("is-active");
+}
 
 // Clear UI Image products before adding the new ones
 function clearUIImages() {
@@ -44,13 +100,27 @@ function createImages() {
 function addProdImagesToUI(data) {
   clearUIImages();
   let imgHolder = document.getElementById("imgHolder");
+  const template = document.querySelector("#cardsTemplate").content;
+
   for (let index = 0; index < data.length; index++) {
-    let img = createImages();
-    img.src = data[index].image;
-    img.classList.add("new-card");
-    img.width = Math.floor(Math.random() * (350 - 300) + 300);
-    img.height = Math.floor(Math.random() * (450 - 400) + 400);
-    imgHolder.appendChild(img);
+    const clone = template.cloneNode(true);
+    let itemId = data[index].id;
+    clone.querySelector("img").src = data[index].image;
+    clone.querySelector("img").classList.add("new-card");
+    clone.querySelector(".content #Title").textContent = data[index].title;
+    clone.querySelector(".content #Price").textContent =
+      data[index].price + "$";
+    clone.querySelector(".content #Rating").textContent =
+      "⭐" +
+      data[index].rating.rate +
+      " from " +
+      data[index].rating.count +
+      " reviews";
+    clone.querySelector("button").addEventListener("click", function () {
+      retrieveItemDetails(itemId);
+    });
+
+    imgHolder.appendChild(clone);
   }
 }
 
@@ -132,3 +202,4 @@ function setUIListeners() {
  */
 
 getAllCategories(); // To ask for the categories and initialize UI menu behavior
+closeModalFromExternal();

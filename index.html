@@ -79,7 +79,57 @@
     <hr />
 
     <main>
+      <div id="modalHolder"></div>
       <div class="container" id="imgHolder"></div>
     </main>
+
+    <template id="cardsTemplate">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image">
+            <img src="" />
+          </figure>
+        </div>
+        <hr />
+        <div class="card-content">
+          <div class="content">
+            <p id="Title"></p>
+            <p id="Price"></p>
+            <hr />
+            <p id="Rating"></p>
+            <button class="button is-medium is-responsive is-link">
+              See item
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="productDetails">
+      <div id="modal" class="modal">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <div class="modalDetails">
+              <img src="" alt="" />
+              <hr />
+              <span id="productName"></span><span id="productRating"></span>
+              <br />
+              <p id="productCategory"></p>
+              <span id="separator">Description</span>
+              <p id="productDesc"></p>
+              <hr />
+              <p id="productPrice"></p>
+              <button class="button is-medium is-responsive is-link">
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+    </template>
   </body>
 </html>
