@@ -222,16 +222,17 @@ function createMainHome() {
   let mainPageHolder = document.getElementById("marqueeholder");
   let template = document.querySelector("#marqueeTemplate").content;
   const clone = template.cloneNode(true);
-
-  console.log(clone);
-  mainPageHolder.appendChild(clone);
+  if (mainPageHolder.innerHTML === "") {
+    mainPageHolder.appendChild(clone);
+  }
 
   // Marquee
   let mainMarqueeHolder = document.getElementById("mainPageHolder");
   let templateMarq = document.querySelector("#mainHomeTemplate").content;
   const cloneMarq = templateMarq.cloneNode(true);
-
-  mainMarqueeHolder.appendChild(cloneMarq);
+  if (mainMarqueeHolder.innerHTML === "") {
+    mainMarqueeHolder.appendChild(cloneMarq);
+  }
 }
 
 /**
