@@ -52,7 +52,7 @@
       </div>
       <!-- /BURGER MENU -->
 
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item" id="home-btn"> Home </a>
 
@@ -66,9 +66,6 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
               <a class="button is-light"> Log in </a>
             </div>
           </div>
@@ -79,9 +76,81 @@
     <hr />
 
     <main>
+      <h2 id="breadcrumb"></h2>
+
+      <div id="marqueeholder"></div>
+
+      <div id="mainPageHolder"></div>
+
       <div id="modalHolder"></div>
+
       <div class="container" id="imgHolder"></div>
     </main>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>This project</strong> was made using Vanilla JS + HTML + CSS,
+          Bulma CSS and
+          <a href="https://fakestoreapi.com/docs">FakeStore API</a> by
+          <a href="https://www.linkedin.com/in/desire-m-carmona/"
+            >Desiré Marrón</a
+          >. The source code is
+          <a href="https://github.com/desiremcarm/CIFO_FinalProject">here</a>.
+          Thank you.<br />
+          Desiré ⭐
+        </p>
+      </div>
+    </footer>
+
+    <template id="marqueeTemplate">
+      <div class="marquee">
+        <ul class="marquee-content">
+          <li class="marquee-item">🎁 Happy holidays! 🎁</li>
+          <li class="marquee-item">🎁 30% off everything 🎁</li>
+          <li class="marquee-item">🎁 Happy holidays! 🎁</li>
+          <li class="marquee-item">🎁 30% off everything 🎁</li>
+          <li class="marquee-item">🎁 Happy holidays! 🎁</li>
+          <li class="marquee-item">🎁 30% off everything 🎁</li>
+          <li class="marquee-item">🎁 Happy holidays! 🎁</li>
+        </ul>
+      </div>
+    </template>
+
+    <template id="mainHomeTemplate">
+      <div id="mainPage">
+        <div id="hero" class="container-fluid">
+          <img id="heroClothes" src="" alt="" />
+          <div class="hero-text">
+            <h1><b>Winter clothes</b></h1>
+            <hr />
+            <h3>up to 30% off now</h3>
+          </div>
+        </div>
+
+        <div id="hero2" class="columns">
+          <div id="C1" class="column">30% off now</div>
+          <div id="C2" class="column"></div>
+        </div>
+
+        <div id="hero3" class="columns">
+          <div id="C3" class="column"></div>
+          <div id="C4" class="column">
+            Check our <br />
+            <b>Outlet winter collection</b>
+          </div>
+        </div>
+
+        <article id="cookies" class="message is-warning">
+          <div class="message-body">
+            This site uses <strong>cookies</strong>, if you don't want to accept
+            them is okay, because we shouldn't track absolutely everything
+            people looks up online, specially if we're just a clothing brand.
+            Cheers!
+          </div>
+        </article>
+      </div>
+    </template>
 
     <template id="cardsTemplate">
       <div class="card">
@@ -97,7 +166,7 @@
             <p id="Price"></p>
             <hr />
             <p id="Rating"></p>
-            <button class="button is-medium is-responsive is-link">
+            <button class="button is-rounded is-medium is-responsive is-link">
               See item
             </button>
           </div>
@@ -121,7 +190,9 @@
               <p id="productDesc"></p>
               <hr />
               <p id="productPrice"></p>
-              <button class="button is-medium is-responsive is-link">
+              <button
+                class="button is-medium is-responsive is-rounded is-primary"
+              >
                 Add to cart
               </button>
             </div>

@@ -8,6 +8,10 @@ const API_URLS = {
   GET_SINGLE_PRODUCT: "https://fakestoreapi.com/products/",
 };
 
+const mainPage = document.querySelector("#mainPage");
+const marquee = document.querySelector(".marquee");
+const breadc = document.querySelector("#breadcrumb");
+
 // GET ALL CATEGORIES
 async function getAllCategories() {
   let data;
@@ -23,8 +27,13 @@ async function getProductsPerCategory(id) {
   let data;
   const res = await fetch(API_URLS.PRODUCTS_BY_CATEGORIES + correctId);
   data = await res.json();
-  console.log(data);
-  addProdImagesToUI(data); // Create images and append them to the UI
+  console.log(id);
+  if (data != null) {
+    removeMainHome();
+    breadc.innerText =
+      data[0].category.charAt(0).toUpperCase() + data[0].category.slice(1);
+    addProdImagesToUI(data); // Create images and append them to the UI
+  }
 }
 
 // GET PRODUCT DETAILS BY ID
@@ -53,6 +62,7 @@ function closeProductDetailModal() {
   document.querySelector("#modalHolder").innerHTML = "";
 }
 
+// Fill modal with product details
 function fillProductDetailModal(data) {
   let template = document.querySelector("#productDetails").content;
   let modalTarget = document.getElementById("modalHolder");
@@ -90,23 +100,19 @@ function clearUIImages() {
   cardContainer.innerHTML = "";
 }
 
-// Creates an IMG html node
-function createImages() {
-  let img = document.createElement("img");
-  return img;
-}
-
 // Adds the product images to the UI
 function addProdImagesToUI(data) {
   clearUIImages();
   let imgHolder = document.getElementById("imgHolder");
   const template = document.querySelector("#cardsTemplate").content;
-
   for (let index = 0; index < data.length; index++) {
     const clone = template.cloneNode(true);
     let itemId = data[index].id;
     clone.querySelector("img").src = data[index].image;
     clone.querySelector("img").classList.add("new-card");
+    clone.querySelector("img").addEventListener("click", function () {
+      retrieveItemDetails(itemId);
+    });
     clone.querySelector(".content #Title").textContent = data[index].title;
     clone.querySelector(".content #Price").textContent =
       data[index].price + "$";
@@ -173,10 +179,17 @@ function paintUnpaintSelected(id) {
   }
 }
 
+function clickedHomeButton(id) {
+  breadc.innerText = "";
+  paintUnpaintSelected(id);
+  createMainHome();
+}
+
 // Adds listener to home button
 function addListenerToHomeButton() {
+  let currentId = "home-btn";
   document.getElementById("home-btn").addEventListener("click", function () {
-    clickUIController(this.id);
+    clickedHomeButton(currentId);
   });
 }
 
@@ -195,6 +208,32 @@ function setUIListeners() {
   addListenerToHomeButton();
 }
 
+function removeMainHome() {
+  let mainMarqueeHolder = document.getElementById("marqueeholder");
+  mainMarqueeHolder.innerHTML = "";
+
+  let mainPageHolder = document.getElementById("mainPageHolder");
+  mainPageHolder.innerHTML = "";
+}
+
+function createMainHome() {
+  clearUIImages();
+  // Home
+  let mainPageHolder = document.getElementById("marqueeholder");
+  let template = document.querySelector("#marqueeTemplate").content;
+  const clone = template.cloneNode(true);
+
+  console.log(clone);
+  mainPageHolder.appendChild(clone);
+
+  // Marquee
+  let mainMarqueeHolder = document.getElementById("mainPageHolder");
+  let templateMarq = document.querySelector("#mainHomeTemplate").content;
+  const cloneMarq = templateMarq.cloneNode(true);
+
+  mainMarqueeHolder.appendChild(cloneMarq);
+}
+
 /**
  *
  * CALL ALL NEEDED FUNCTIONS
@@ -203,3 +242,5 @@ function setUIListeners() {
 
 getAllCategories(); // To ask for the categories and initialize UI menu behavior
 closeModalFromExternal();
+
+createMainHome();
