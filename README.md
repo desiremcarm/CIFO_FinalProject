@@ -6,6 +6,9 @@ As a final project for the CIFO Web frontend development certificate, I created 
 ## Objective
 To create a web app using only HTML5, CSS3 and vanilla JavaScript, without any web framework.
 
+## See project up and running!
+Click [here](https://ecommercedesire.netlify.app).
+
 ## See memory
 [PDF](https://github.com/desiremcarm/CIFO_FinalProject/blob/main/memory/Memoria_Proyecto.pdf) about the project development.
 
