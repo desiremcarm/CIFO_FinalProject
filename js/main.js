@@ -23,6 +23,7 @@ async function getAllCategories() {
 
 // GET PRODUCT BY CATEGORY
 async function getProductsPerCategory(id) {
+  document.querySelector(".clickTop").addEventListener("click", topFunction);
   let categoryItem = dropdownIDs.indexOf(id);
   let correctId = dropdownCategories[categoryItem];
   let data;
@@ -42,7 +43,6 @@ async function retrieveItemDetails(itemId) {
   let data;
   const res = await fetch(API_URLS.GET_SINGLE_PRODUCT + itemId);
   data = await res.json();
-  console.log(data);
   fillProductDetailModal(data);
 }
 
@@ -83,6 +83,10 @@ function fillProductDetailModal(data) {
   clone
     .querySelector(".modal-background")
     .addEventListener("click", closeProductDetailModal);
+
+  clone
+    .querySelector("#addCartBtn")
+    .addEventListener("click", fireAddProductToast);
 
   modalTarget.appendChild(clone);
 
@@ -147,6 +151,7 @@ function fillDropdownCategories(categories) {
     a.innerText =
       categories[index].charAt(0).toUpperCase() + categories[index].slice(1);
     a.classList.add("navbar-item");
+    a.classList.add("clickTop");
     a.setAttribute("id", dropdownIDs[index]);
     holder.appendChild(a);
   }
@@ -245,6 +250,18 @@ function cleanLocalStorage() {
   }
 }
 
+function fireAddProductToast() {
+  CrispyToast.success("Product into your cart!", {
+    position: "bottom-right", // Position of the toast (top-right, top-left, bottom-right, bottom-left)
+    timeout: 3000, // Duration the toast should be visible in milliseconds
+  });
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
 /**
  *
  * CALL FUNCTIONS
@@ -254,3 +271,5 @@ function cleanLocalStorage() {
 getAllCategories(); // To ask for the categories and initialize UI menu behavior
 closeModalFromExternal();
 createMainHome();
+
+document.querySelector(".clickTop").addEventListener("click", topFunction);

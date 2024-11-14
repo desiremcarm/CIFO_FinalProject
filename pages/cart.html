@@ -35,12 +35,29 @@
     <main class="container">
       <div class="cart">
         <h2>Your cart</h2>
-        <div id="cartHolder">
-          <p id="productName"></p>
-          <p id="productPrice"></p>
-          <p id="productQuantity"></p>
-        </div>
+        <hr />
+        <p id="cartEmpty"></p>
+        <div id="cartHolder"></div>
+        <p id="totalPrice">Total price</p>
       </div>
+      <button id="buyBtn" class="button is-link">Buy</button>
     </main>
   </body>
+
+  <template id="cartTemplate">
+    <div id="cart">
+      <div class="leftCart">
+        <img
+          class="image"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJsAAACUCAMAAACz6atrAAAAYFBMVEXw8fP6+/2Ai5H29/nz9Pa4vMCNl5yBipL09vqfqq2XoaOZn6Xz8/Ojqa3w8/R9iI55g4vM0tfo6u12gofu8e7L0dKGkZfe4OXHy8/X292vt7eyu76Plp6osbGvtr6nsLcJ3G1iAAACH0lEQVR4nO3a23aCMBQEUISDoAgJUJF66///ZQmoDZcCSW2Sh5lHArodIIG19DbuxrMNmAlseoFNL7DpBTa9wKYX2PQyYQvsZJXNsxPYYIMNNthggw022GCDDTbYYIMNNthggw022GCD7e82Uo05G9WhWuqDKRvVPFJLWS8396bedsmakyT9mCRd3uk9tmyXxEq2IElN9Zbt9mq9HWBz3ebN24KMAmu22d6o2HKeFL0JzZXein3p+zzt3ciu9JYzX+RT3sOV3urWxmzZZns7VQ2OVYW8zZXeqC7Lkh17O7jSW9NcWJ/64+7YvOH0ZtFG9LFwgD3b+bJ0gC1bHJY83Mw3Z8l2uDXPwPwy9dU/04gdG4XNCuVHE80F+bXIMos2uvF2hRo3R8eSV8+pxIata60Nvwdyc0HOmFgdDrZsdObR09Zvjo5MjLBrt6yat8X3V2uD5ujxMOI/Tqt525nLNJ+9mnu01m68CpxpG/Vb65prVwjKpREmmjNtk641qblAtBbJIwJn1JbEX6PWuuaaO3Qw0lxzG6O2cNxad7eGeTQcaaYSg7aUsSmZSMnH21hVGeztV9p0GHfX5sMmQqm6bfFD32U7T04gc7a7sXfAIt2qJfWM2TKiWCnDF69/tKkmW7OTJduqwAYbbLDBBhtssMEGG2ywwQYbbLDBBhtssMEGmxM25T/ZvyerbM4ENr3AphfY9AKbXmDTC2x6gU0v38fyRbTVXHHEAAAAAElFTkSuQmCC"
+          alt=""
+        />
+        <p id="productName">Name</p>
+      </div>
+      <div class="rightCart">
+        <p id="productPrice">12€</p>
+        <p id="productQuantity">2</p>
+      </div>
+    </div>
+  </template>
 </html>
