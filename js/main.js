@@ -223,22 +223,24 @@ function removeMainHome() {
 }
 
 function createMainHome() {
-  clearUIImages();
-  // Home
-  let mainPageHolder = document.getElementById("marqueeholder");
-  let template = document.querySelector("#marqueeTemplate").content;
-  const clone = template.cloneNode(true);
-  if (mainPageHolder.innerHTML === "") {
-    mainPageHolder.appendChild(clone);
-  }
+  window.onload = function () {
+    clearUIImages();
+    // Home
+    let mainPageHolder = document.getElementById("marqueeholder");
+    let template = document.querySelector("#marqueeTemplate").content;
+    const clone = template.cloneNode(true);
+    if (mainPageHolder.innerHTML === "") {
+      mainPageHolder.appendChild(clone);
+    }
 
-  // Marquee
-  let mainMarqueeHolder = document.getElementById("mainPageHolder");
-  let templateMarq = document.querySelector("#mainHomeTemplate").content;
-  const cloneMarq = templateMarq.cloneNode(true);
-  if (mainMarqueeHolder.innerHTML === "") {
-    mainMarqueeHolder.appendChild(cloneMarq);
-  }
+    // Marquee
+    let mainMarqueeHolder = document.getElementById("mainPageHolder");
+    let templateMarq = document.querySelector("#mainHomeTemplate").content;
+    const cloneMarq = templateMarq.cloneNode(true);
+    if (mainMarqueeHolder.innerHTML === "") {
+      mainMarqueeHolder.appendChild(cloneMarq);
+    }
+  };
 }
 
 function cleanLocalStorage() {
