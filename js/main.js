@@ -273,5 +273,3 @@ function topFunction() {
 getAllCategories(); // To ask for the categories and initialize UI menu behavior
 closeModalFromExternal();
 createMainHome();
-
-document.querySelector(".clickTop").addEventListener("click", topFunction);
