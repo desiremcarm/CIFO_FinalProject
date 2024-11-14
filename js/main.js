@@ -223,24 +223,22 @@ function removeMainHome() {
 }
 
 function createMainHome() {
-  window.onload = function () {
-    clearUIImages();
-    // Home
-    let mainPageHolder = document.getElementById("marqueeholder");
-    let template = document.querySelector("#marqueeTemplate").content;
-    const clone = template.cloneNode(true);
-    if (mainPageHolder.innerHTML === "") {
-      mainPageHolder.appendChild(clone);
-    }
+  clearUIImages();
+  // Home
+  let mainPageHolder = document.getElementById("marqueeholder");
+  let template = document.querySelector("#marqueeTemplate").content;
+  const clone = template.cloneNode(true);
+  if (mainPageHolder.innerHTML === "") {
+    mainPageHolder.appendChild(clone);
+  }
 
-    // Marquee
-    let mainMarqueeHolder = document.getElementById("mainPageHolder");
-    let templateMarq = document.querySelector("#mainHomeTemplate").content;
-    const cloneMarq = templateMarq.cloneNode(true);
-    if (mainMarqueeHolder.innerHTML === "") {
-      mainMarqueeHolder.appendChild(cloneMarq);
-    }
-  };
+  // Marquee
+  let mainMarqueeHolder = document.getElementById("mainPageHolder");
+  let templateMarq = document.querySelector("#mainHomeTemplate").content;
+  const cloneMarq = templateMarq.cloneNode(true);
+  if (mainMarqueeHolder.innerHTML === "") {
+    mainMarqueeHolder.appendChild(cloneMarq);
+  }
 }
 
 function cleanLocalStorage() {
@@ -269,7 +267,8 @@ function topFunction() {
  * CALL FUNCTIONS
  *
  */
-
-getAllCategories(); // To ask for the categories and initialize UI menu behavior
+window.onload = function () {
+  getAllCategories(); // To ask for the categories and initialize UI menu behavior
+  createMainHome();
+};
 closeModalFromExternal();
-createMainHome();
